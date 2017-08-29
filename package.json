@@ -1,0 +1,12 @@
+{
+  "name": "kromat",
+  "version": "1.0.0",
+  "description": "Start Google Chrome with a specific account",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christophe Pelé",
+  "license": "GPL-3.0"
+}
