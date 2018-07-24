@@ -6,6 +6,8 @@ A script to launch Google Chrome on linux with a specific account.
 
 This script should work on Ubuntu based distributions. It was tested on Ubuntu 16.04 and Mint 18. It needs a recent version of Node.js and npm.
 
+It can also work on macOS if you put the included `google-chrome` script in a `bin` directory that is in your PATH.
+
 Clone this repository and launch `npm install -g` as an admin:
 
 ```
