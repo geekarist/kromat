@@ -6,10 +6,10 @@ var exec = require('child_process').exec
 var glob = require('glob')
 var fs = require('fs')
 
-var userName = process.argv[2]
+var query = process.argv[2]
 var url = process.argv[3]
 
-function launchChrom(userName) {
+function launchChrom(query) {
 	var profileDirectory
 	var confDir = process.env.HOME + "/.config/google-chrome"
 	// Search profile directories for files named 'Preferences'
@@ -18,8 +18,10 @@ function launchChrom(userName) {
 			fs.readFile(file, function(err, contents) {
 				var prefs = JSON.parse(contents)
 				// Launch browser if user name matches
-				var confUser = prefs.google && (prefs.google.services.username || prefs.google.services.last_username)
-				if (confUser && confUser.indexOf(userName) != -1) {
+				var userName = prefs.google && (prefs.google.services.username || prefs.google.services.last_username)
+				var profileName = prefs.profile && prefs.profile.name
+				var searchableName = userName || profileName
+				if (searchableName && searchableName.indexOf(query) != -1) {
 					profileDirectory = path.basename(path.dirname(file))
 					exec('google-chrome --profile-directory=\'' + profileDirectory + '\' ' + (url || ''))
 				}
@@ -28,4 +30,4 @@ function launchChrom(userName) {
 	})
 }
 
-launchChrom(userName)
+launchChrom(query)
