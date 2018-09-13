@@ -1,3 +1,5 @@
 #!/bin/bash
 
 open -n -a 'Google Chrome' --args "$@"
+sleep 1
+osascript -e 'tell application "Google Chrome" to activate'
